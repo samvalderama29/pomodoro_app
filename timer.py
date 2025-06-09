@@ -30,3 +30,8 @@ class Timer:
             self.on_update(f"{mins:02}:{secs:02}")
             time.sleep(1)
             seconds -= 1
+
+    def reset(self):
+        self.running = False
+        self.reps = 0
+        self.on_update("00:00")

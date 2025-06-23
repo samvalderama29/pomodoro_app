@@ -31,6 +31,9 @@ class Timer:
             time.sleep(1)
             seconds -= 1
 
+        if self.running:
+            self.on_session_complete()
+
     def reset(self):
         self.running = False
         self.reps = 0

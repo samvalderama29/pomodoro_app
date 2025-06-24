@@ -29,3 +29,18 @@ class PomodoroUI:
         self.bg_photo = tk.PhotoImage(file = "pomodoro_window.png")
         self.bg_label = tk.Label(self.root, image = self.bg_photo)
         self.bg_label.place(x = 0, y = 0, relwidth = 1, relheight = 1)
+
+    def create_widgets(self):
+        self.task_entry = tk.Entry(self.root, font = self.primary_font, width = 35, justify = "center", bd = 2)
+        self.task_entry.insert(0, "Enter the task you want to finish")
+
+        self.label_font = tk.Label(self.root, text = "TIMER", font = self.label_font, bg = "#d6a254", fg = "#000000", bd = 0)
+
+        self.time_display = tk.Label(self.root, text = "25:00", font = self.timer_font, bg = "#d6a254", fg = "#000000", bd = 0)
+
+        self.start_button = tk.Button(self.root, text = "START", command = self.start_timer, font = self.button_font,
+                                      fg = "white", bg = "#093FBA", width = 8, relief = "flat")
+        self.done_button = tk.Button(self.root, text = "DONE", command = self.full_reset, font = self.button_font,
+                                      fg = "white", bg = "#06923E", width = 8, relief = "flat")
+        self.reset_button = tk.Button(self.root, text = "RESET", command = self.full_reset, font = self.button_font,
+                                      fg = "white", bg = "#8A0000", width = 8, relief = "flat")

@@ -1,6 +1,7 @@
 import time
 import threading
 from configurations import work_min, short_break_min, long_break_min
+from playsound import playsound
 
 class Timer:
     def __init__(self, on_update, on_session_complete):
@@ -20,21 +21,38 @@ class Timer:
     def run_timer(self):
         if self.reps % 8 == 0:
             seconds = long_break_min * 60
+            session_type = "break"
         elif self.reps % 2 == 0:
             seconds = short_break_min * 60
+            session_type = "break"
         else:
             seconds = work_min * 60
+            session_type = "work"
 
-        while seconds > 0 and self.running:
-            mins, secs = divmod(seconds, 60)
+        if session_type == "work":
+            playsound("work_time_start.mp3")
+
+        end_time = time.time() + seconds
+
+        while self.running and time.time() < end_time:
+            remaining = int(end_time - time.time())
+            mins, secs = divmod(remaining, 60)
             self.on_update(f"{mins:02}:{secs:02}")
             time.sleep(1)
-            seconds -= 1
 
         if self.running:
             self.on_session_complete()
+            playsound("success_sound_effect.mp3")
 
     def reset(self):
         self.running = False
         self.reps = 0
-        self.on_update("00:00")
+        self.on_update("25:00")
+
+        if self.thread and self.thread.is_alive():
+            self.thread.join()
+
+    def done(self):
+        self.running = False
+        playsound("success_sound_effect.mp3")
+        self.reps = 0

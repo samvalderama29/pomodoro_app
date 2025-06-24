@@ -20,7 +20,7 @@ class PomodoroUI:
 
     def setup_fonts(self):
         display_font = "Montserrat" if "Montserrat" in font.families() else "Helvetica"
-        self.primary_font = (display_font, 18)
+        self.primary_font = (display_font, 15)
         self.label_font = (display_font, 24, "bold")
         self.timer_font = (display_font, 83, "bold")
         self.button_font = (display_font, 12)
@@ -31,7 +31,7 @@ class PomodoroUI:
         self.bg_label.place(x = 0, y = 0, relwidth = 1, relheight = 1)
 
     def create_widgets(self):
-        self.task_entry = tk.Entry(self.root, font = self.primary_font, width = 35, justify = "center", bd = 2)
+        self.task_entry = tk.Entry(self.root, font = self.primary_font, width = 40, justify = "center", bd = 1.5)
         self.task_entry.insert(0, "Enter the task you want to finish")
 
         self.label = tk.Label(self.root, text = "TIMER", font = self.label_font, bg = "#d6a254", fg = "#000000", bd = 0)
@@ -47,11 +47,11 @@ class PomodoroUI:
 
     def place_widgets(self):
         self.task_entry.place(relx = 0.5, rely = 0.38, anchor = "center")
-        self.label.place(relx = 0.5, rely = 0.48, anchor = "center")
+        self.label.place(relx = 0.5, rely = 0.47, anchor = "center")
         self.time_display.place(relx = 0.5, rely = 0.67, anchor = "center")
-        self.start_button.place(relx = 0.5, rely = 0.87, anchor = "center")
+        self.start_button.place(relx = 0.35, rely = 0.87, anchor = "center")
         self.done_button.place(relx = 0.5, rely = 0.87, anchor = "center")
-        self.reset_button.place(relx = 0.5, rely = 0.87, anchor = "center")
+        self.reset_button.place(relx = 0.65, rely = 0.87, anchor = "center")
 
     def start_timer(self):
         self.timer.start()

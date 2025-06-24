@@ -24,3 +24,8 @@ class PomodoroUI:
         self.label_font = (display_font, 24, "bold")
         self.timer_font = (display_font, 83, "bold")
         self.button_font = (display_font, 12)
+
+    def setup_background(self):
+        self.bg_photo = tk.PhotoImage(file = "pomodoro_window.png")
+        self.bg_label = tk.Label(self.root, image = self.bg_photo)
+        self.bg_label.place(x = 0, y = 0, relwidth = 1, relheight = 1)

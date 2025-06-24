@@ -40,9 +40,9 @@ class PomodoroUI:
 
         self.start_button = tk.Button(self.root, text = "START", command = self.start_timer, font = self.button_font,
                                       fg = "white", bg = "#093FBA", width = 8, relief = "flat")
-        self.done_button = tk.Button(self.root, text = "DONE", command = self.full_reset, font = self.button_font,
+        self.done_button = tk.Button(self.root, text = "DONE", command = self.done_button_clicked, font = self.button_font,
                                       fg = "white", bg = "#06923E", width = 8, relief = "flat")
-        self.reset_button = tk.Button(self.root, text = "RESET", command = self.done_button_clicked, font = self.button_font,
+        self.reset_button = tk.Button(self.root, text = "RESET", command = self.full_reset, font = self.button_font,
                                       fg = "white", bg = "#8A0000", width = 8, relief = "flat")
 
     def place_widgets(self):

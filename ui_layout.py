@@ -62,3 +62,10 @@ class PomodoroUI:
     def session_complete(self):
         mode = "Break Time!" if self.timer.reps % 2 == 0 else "Work Time!"
         self.label.config(text = mode)
+
+    def full_reset(self):
+        self.task_entry.delete(0, tk.END)
+        self.task_entry.insert(0, "Enter the task you want to finish")
+        self.time_display.config(text = "25:00")
+        self.label.config(text = "TIMER")
+        self.timer.reset()

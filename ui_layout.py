@@ -16,7 +16,7 @@ class PomodoroUI:
         self.root.title("Pomodoro Tracker")
         self.root.geometry("800x450")
         self.root.resizable(False, False)
-        self.root.iconphoto(False, tk.PhotoImage(file = "pomodoro_logo.png"))
+        self.root.iconphoto(False, tk.PhotoImage(file ="assets/images/pomodoro_logo.png"))
 
     def setup_fonts(self):
         display_font = "Montserrat" if "Montserrat" in font.families() else "Helvetica"
@@ -26,7 +26,7 @@ class PomodoroUI:
         self.button_font = (display_font, 12)
 
     def setup_background(self):
-        self.bg_photo = tk.PhotoImage(file = "pomodoro_window.png")
+        self.bg_photo = tk.PhotoImage(file ="assets/images/pomodoro_window.png")
         self.bg_label = tk.Label(self.root, image = self.bg_photo)
         self.bg_label.place(x = 0, y = 0, relwidth = 1, relheight = 1)
 

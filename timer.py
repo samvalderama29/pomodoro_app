@@ -32,7 +32,7 @@ class Timer:
         if session_type == "work":
             threading.Thread(
                 target=playsound,
-                args = ("work_time_start.mp3",),
+                args = ("assets/sounds/work_time_start.mp3",),
                 daemon = True
             ).start()
             time.sleep(4)
@@ -49,7 +49,7 @@ class Timer:
             self.on_session_complete()
             threading.Thread(
                 target=playsound,
-                args =("success_sound_effect.mp3",),
+                args =("assets/sounds/success_sound_effect.mp3",),
                 daemon =True
             ).start()
 
@@ -66,6 +66,6 @@ class Timer:
         self.reps = 0
         threading.Thread(
             target = playsound,
-            args = ("success_sound_effect.mp3",),
+            args = ("assets/sounds/success_sound_effect.mp3",),
             daemon = True
         ).start()

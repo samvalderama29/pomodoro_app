@@ -13,7 +13,7 @@ class PomodoroUI:
         self.place_widgets()
 
     def setup_window(self):
-        self.root.title("Pomodoro Trakcer")
+        self.root.title("Pomodoro Tracker")
         self.root.geometry("800x450")
         self.root.resizable(False, False)
         self.root.iconphoto(False, tk.PhotoImage(file = "pomodoro_logo.png"))
@@ -42,7 +42,7 @@ class PomodoroUI:
                                       fg = "white", bg = "#093FBA", width = 8, relief = "flat")
         self.done_button = tk.Button(self.root, text = "DONE", command = self.full_reset, font = self.button_font,
                                       fg = "white", bg = "#06923E", width = 8, relief = "flat")
-        self.reset_button = tk.Button(self.root, text = "RESET", command = self.full_reset, font = self.button_font,
+        self.reset_button = tk.Button(self.root, text = "RESET", command = self.done_button_clicked, font = self.button_font,
                                       fg = "white", bg = "#8A0000", width = 8, relief = "flat")
 
     def place_widgets(self):
@@ -69,3 +69,7 @@ class PomodoroUI:
         self.time_display.config(text = "25:00")
         self.label.config(text = "TIMER")
         self.timer.reset()
+
+    def done_button_clicked(self):
+        self.timer.done()
+        self.full_reset()

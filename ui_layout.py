@@ -52,3 +52,6 @@ class PomodoroUI:
         self.start_button.place(relx = 0.5, rely = 0.87, anchor = "center")
         self.done_button.place(relx = 0.5, rely = 0.87, anchor = "center")
         self.reset_button.place(relx = 0.5, rely = 0.87, anchor = "center")
+
+    def start_timer(self):
+        self.timer.start()

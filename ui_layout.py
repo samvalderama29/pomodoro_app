@@ -55,3 +55,6 @@ class PomodoroUI:
 
     def start_timer(self):
         self.timer.start()
+
+    def update_display(self, time_str):
+        self.time_display.config(text = time_str)

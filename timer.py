@@ -30,7 +30,12 @@ class Timer:
             session_type = "work"
 
         if session_type == "work":
-            playsound("work_time_start.mp3")
+            threading.Thread(
+                target=playsound,
+                args = ("work_time_start.mp3",),
+                daemon = True
+            ).start()
+            time.sleep(4)
 
         end_time = time.time() + seconds
 
@@ -42,7 +47,11 @@ class Timer:
 
         if self.running:
             self.on_session_complete()
-            playsound("success_sound_effect.mp3")
+            threading.Thread(
+                target=playsound,
+                args =("success_sound_effect.mp3",),
+                daemon =True
+            ).start()
 
     def reset(self):
         self.running = False
@@ -54,5 +63,9 @@ class Timer:
 
     def done(self):
         self.running = False
-        playsound("success_sound_effect.mp3")
         self.reps = 0
+        threading.Thread(
+            target = playsound,
+            args = ("success_sound_effect.mp3",),
+            daemon = True
+        ).start()

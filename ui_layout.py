@@ -23,4 +23,4 @@ class PomodoroUI:
         self.primary_font = (display_font, 18)
         self.label_font = (display_font, 24, "bold")
         self.timer_font = (display_font, 83, "bold")
-        self.button_font = (use_font, 12)
+        self.button_font = (display_font, 12)

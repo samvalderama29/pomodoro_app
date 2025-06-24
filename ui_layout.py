@@ -58,3 +58,7 @@ class PomodoroUI:
 
     def update_display(self, time_str):
         self.time_display.config(text = time_str)
+
+    def session_complete(self):
+        mode = "Break Time!" if self.timer.reps % 2 == 0 else "Work Time!"
+        self.label.config(text = mode)

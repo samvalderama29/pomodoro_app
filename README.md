@@ -46,7 +46,8 @@ pomodoro_app/
 │
 ├── assets/
 │   ├── images/
-│   │   └── pomodoro_logo.png         
+│   │   └── pomodoro_logo.png
+│   │   └── pomodoro_window.png         
 │   ├── readme_images/
 │   │   └── pomodoro_gui.jpg          
 │   └── sounds/

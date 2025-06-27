@@ -1,22 +1,16 @@
-import tkinter as tk
+from tkinter import Tk
 from timer import Timer
 from ui_layout import PomodoroUI
 
-class PomodoroApp:
-    def __init__(self):
-        self.root = tk.Tk()
-        self.timer = Timer(self.update_display, self.session_complete)
-        self.ui = PomodoroUI(self.root, self.timer)
+root = Tk()
 
-    def update_display(self, time_str):
-        self.ui.update_display(time_str)
+def update_timer_display(time_str):
+    ui.update_display(time_str)
 
-    def session_complete(self):
-        self.ui.session_complete()
+def session_started():
+    ui.session_complete()
 
-    def run(self):
-        self.root.mainloop()
+timer = Timer(update_timer_display, session_started)
+ui = PomodoroUI(root, timer)
 
-if __name__ == "__main__":
-    app = PomodoroApp()
-    app.run()
+root.mainloop()

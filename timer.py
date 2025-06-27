@@ -14,44 +14,51 @@ class Timer:
     def start(self):
         if not self.running:
             self.running = True
-            self.reps += 1
             self.thread = threading.Thread(target = self.run_timer)
             self.thread.start()
 
     def run_timer(self):
-        if self.reps % 8 == 0:
-            seconds = long_break_min * 60
-            session_type = "break"
-        elif self.reps % 2 == 0:
-            seconds = short_break_min * 60
-            session_type = "break"
-        else:
-            seconds = work_min * 60
-            session_type = "work"
+        while self.running:
+            self.reps += 1
 
-        if session_type == "work":
-            threading.Thread(
-                target = playsound,
-                args = ("assets/sounds/work_time_start.mp3",),
-                daemon = True
-            ).start()
-            time.sleep(4)
+            if self.reps % 8 == 0:
+                seconds = long_break_min * 60
+                session_type = "break"
+            elif self.reps % 2 == 0:
+                seconds = short_break_min * 60
+                session_type = "break"
+            else:
+                seconds = work_min * 60
+                session_type = "work"
 
-        end_time = time.time() + seconds
+            if session_type == "work":
+                threading.Thread(
+                    target = playsound,
+                    args = ("assets/sounds/work_time_start.mp3",),
+                    daemon = True
+                ).start()
+                time.sleep(4)
 
-        while self.running and time.time() < end_time:
-            remaining = int(end_time - time.time())
-            mins, secs = divmod(remaining, 60)
-            self.on_update(f"{mins:02}:{secs:02}")
-            time.sleep(1)
-
-        if self.running:
             self.on_session_complete()
+
+            end_time = time.time() + seconds
+
+            while self.running and time.time() < end_time:
+                remaining = int(end_time - time.time())
+                mins, secs = divmod(remaining, 60)
+                self.on_update(f"{mins:02}:{secs:02}")
+                time.sleep(1)
+
+            if not self.running:
+                break
+
             threading.Thread(
                 target = playsound,
                 args = ("assets/sounds/success_sound_effect.mp3",),
                 daemon = True
             ).start()
+
+        self.running = False
 
     def reset(self):
         self.running = False

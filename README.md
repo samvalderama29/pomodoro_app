@@ -60,6 +60,38 @@ pomodoro_app/
 └── README.md
 
 ````
+---
+
+## 🧱 Object-Oriented Programming Principles Used
+
+This project demonstrates key **Object-Oriented Programming (OOP)** principles in Python:
+
+### 1. 🧩 Encapsulation
+
+The `PomodoroUI` and `Timer` classes encapsulate their respective responsibilities:
+
+* UI components, fonts, and layout are managed within `PomodoroUI`
+* Timer logic (start, reset, countdown) is confined to the `Timer` class
+
+This keeps implementation details hidden and prevents direct access to internal data.
+
+### 2. 🎯 Abstraction
+
+Methods like `start_timer()`, `reset()`, and `done()` provide a simplified interface to complex functionality. Internal mechanisms (e.g., `after()` callbacks, thread-safe audio handling) are abstracted away from the main logic.
+
+### 3. 🔁 Polymorphism
+
+Plymorphism is applied through method overriding and dynamic behavior:
+
+* Multiple buttons (Start, Done, Reset) trigger different responses via shared-style interfaces.
+* Functions like `update_display()` can handle different time formats without knowing the source logic.
+
+### 4. 🚫 Inheritance (Not Used)
+
+This project does not currently implement inheritance because:
+
+* The components (Timer and UI) serve distinct roles with no shared base class behavior.
+* There was no need to generalize or reuse behaviors across multiple subclasses.
 
 ---
 
@@ -68,8 +100,8 @@ pomodoro_app/
 1. **Clone the repository** or download the files:
 
 ```bash
-git clone https://github.com/your-username/pomodoro-tracker.git
-cd pomodoro-tracker
+git clone https://github.com/samvalderama29/pomodoro_app.git
+cd pomodoro_app
 ````
 
 2. **Install dependencies:**
@@ -78,26 +110,13 @@ cd pomodoro-tracker
 pip install playsound
 ```
 
-> `tkinter` is usually included with Python by default. If not, you may need to install it manually depending on your OS.
+> `tkinter` comes bundled with Python on most systems. If not, install it via your OS package manager.
 
-> For Windows users, `playsound==1.2.2` is recommended for compatibility.
-
-3. **Run the app:**
+3. **Run the application:**
 
 ```bash
 python main.py
 ```
-
----
-
-## 🔊 Sound Not Playing?
-
-* Ensure the following sound files exist:
-
-  * `assets/sounds/success_sound_effect.mp3`
-  * `assets/sounds/work_start_sound.mp3`
-* Make sure your device is not muted and has media permissions enabled.
-* On Linux/Mac, `playsound` may require additional libraries like `gstreamer`.
 
 ---
 
